@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350">
+  <style>
+    .box { stroke: #ccc; stroke-width: 1; }
+    .highlight { fill: #e6f7ff; }
+    .success { fill: #b7eb8f; }
+    text { font-family: sans-serif; text-anchor: middle; }
+    .name { font-size: 14px; }
+    .step { font-size: 10px; fill: #777; }
+    .result { font-size: 14px; font-weight: bold; }
+    .fail { fill: #f44; }
+    .pass { fill: #52c41a; }
+    .caption { font-size: 12px; fill: #666; }
+  </style>
+
+  <rect width="800" height="350" fill="white" />
+  <text x="400" y="25" font-size="16" font-weight="bold">Linear Search</text>
+
+      <g transform="translate(170, 50)">
+        <rect width="80" height="40" rx="2" class="box highlight" />
+        <text x="40" y="25" class="name">Ada</text>
+        <text x="40" y="-10" class="step">Check 1</text>
+        <text x="40" y="55" class="result fail">✗</text>
+      </g>
+      <g transform="translate(270, 50)">
+        <rect width="80" height="40" rx="2" class="box highlight" />
+        <text x="40" y="25" class="name">Alan</text>
+        <text x="40" y="-10" class="step">Check 2</text>
+        <text x="40" y="55" class="result fail">✗</text>
+      </g>
+      <g transform="translate(370, 50)">
+        <rect width="80" height="40" rx="2" class="box highlight" />
+        <text x="40" y="25" class="name">Anders</text>
+        <text x="40" y="-10" class="step">Check 3</text>
+        <text x="40" y="55" class="result fail">✗</text>
+      </g>
+      <g transform="translate(470, 50)">
+        <rect width="80" height="40" rx="2" class="box highlight" />
+        <text x="40" y="25" class="name">Bjarne</text>
+        <text x="40" y="-10" class="step">Check 4</text>
+        <text x="40" y="55" class="result fail">✗</text>
+      </g>
+      <g transform="translate(570, 50)">
+        <rect width="80" height="40" rx="2" class="box highlight" />
+        <text x="40" y="25" class="name">Brian</text>
+        <text x="40" y="-10" class="step">Check 5</text>
+        <text x="40" y="55" class="result fail">✗</text>
+      </g>
+      <g transform="translate(170, 150)">
+        <rect width="80" height="40" rx="2" class="box highlight" />
+        <text x="40" y="25" class="name">Charles</text>
+        <text x="40" y="-10" class="step">Check 6</text>
+        <text x="40" y="55" class="result fail">✗</text>
+      </g>
+      <g transform="translate(270, 150)">
+        <rect width="80" height="40" rx="2" class="box highlight" />
+        <text x="40" y="25" class="name">Dennis</text>
+        <text x="40" y="-10" class="step">Check 7</text>
+        <text x="40" y="55" class="result fail">✗</text>
+      </g>
+      <g transform="translate(370, 150)">
+        <rect width="80" height="40" rx="2" class="box highlight" />
+        <text x="40" y="25" class="name">Donald</text>
+        <text x="40" y="-10" class="step">Check 8</text>
+        <text x="40" y="55" class="result fail">✗</text>
+      </g>
+      <g transform="translate(470, 150)">
+        <rect width="80" height="40" rx="2" class="box highlight" />
+        <text x="40" y="25" class="name">Edsger</text>
+        <text x="40" y="-10" class="step">Check 9</text>
+        <text x="40" y="55" class="result fail">✗</text>
+      </g>
+      <g transform="translate(570, 150)">
+        <rect width="80" height="40" rx="2" class="box highlight" />
+        <text x="40" y="25" class="name">Frances</text>
+        <text x="40" y="-10" class="step">Check 10</text>
+        <text x="40" y="55" class="result fail">✗</text>
+      </g>
+      <g transform="translate(170, 250)">
+        <rect width="80" height="40" rx="2" class="box success" />
+        <text x="40" y="25" class="name">Guido</text>
+        <text x="40" y="-10" class="step">Check 11</text>
+        <text x="40" y="55" class="result pass">✓</text>
+      </g>
+      <g transform="translate(270, 250)">
+        <rect width="80" height="40" rx="2" class="box " />
+        <text x="40" y="25" class="name">Grace</text>
+
+
+      </g>
+      <g transform="translate(370, 250)">
+        <rect width="80" height="40" rx="2" class="box " />
+        <text x="40" y="25" class="name">James</text>
+
+
+      </g>
+      <g transform="translate(470, 250)">
+        <rect width="80" height="40" rx="2" class="box " />
+        <text x="40" y="25" class="name">John</text>
+
+
+      </g>
+      <g transform="translate(570, 250)">
+        <rect width="80" height="40" rx="2" class="box " />
+        <text x="40" y="25" class="name">Ken</text>
+
+
+      </g>
+
+  <text x="400" y="320" class="caption" text-anchor="middle">Linear search checks each name in order until finding "Guido" or reaching the end.</text>
+  <text x="400" y="340" class="caption" text-anchor="middle">If "Guido" is the 11th name, we need 11 checks.</text>
+</svg>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 776">
+
+  <!-- Background -->
+  <rect width="600" height="776" fill="#f4f0e6" />
+
+  <!-- Title -->
+  <text x="50" y="100" font-family="'Courier New', monospace" font-size="38" font-weight="bold" fill="#1a2f5e">Practical</text>
+  <text x="50" y="145" font-family="'Courier New', monospace" font-size="38" font-weight="bold" fill="#1a2f5e">Problem</text>
+  <text x="50" y="190" font-family="'Courier New', monospace" font-size="38" font-weight="bold" fill="#1a2f5e">Solving</text>
+  <rect x="232" y="168" width="14" height="28" fill="#1a2f5e" opacity="0.85" />
+
+  <!-- Subtitle -->
+  <text x="50" y="233" font-family="'Courier New', monospace" font-size="14" fill="#1a2f5e" opacity="0.75">From Computational Thinking to Programs</text>
+  <text x="50" y="254" font-family="'Courier New', monospace" font-size="14" fill="#1a2f5e" opacity="0.75">with Python</text>
+
+  <!-- Divider -->
+  <line x1="50" y1="271" x2="550" y2="271" stroke="#1a2f5e" stroke-width="1" stroke-opacity="0.15" />
+
+  <!-- Ghost edges -->
+  <line x1="367.9" y1="580.0" x2="349.9" y2="642.7" stroke="#1a2f5e" stroke-width="1" stroke-opacity="0.10" />
+  <line x1="382.1" y1="580.0" x2="400.1" y2="642.7" stroke="#1a2f5e" stroke-width="1" stroke-opacity="0.10" />
+  <line x1="515.3" y1="579.1" x2="489.7" y2="643.3" stroke="#1a2f5e" stroke-width="1" stroke-opacity="0.08" />
+  <line x1="530.6" y1="580.4" x2="544.1" y2="642.4" stroke="#1a2f5e" stroke-width="1" stroke-opacity="0.08" />
+
+  <!-- Faded edges -->
+  <line x1="324.6" y1="362.2" x2="428.7" y2="435.1" stroke="#1a2f5e" stroke-width="1"   stroke-opacity="0.20" />
+  <line x1="134.9" y1="471.2" x2="90.1"  y2="533.8" stroke="#1a2f5e" stroke-width="1"   stroke-opacity="0.20" />
+  <line x1="434.9" y1="471.2" x2="390.1" y2="533.8" stroke="#1a2f5e" stroke-width="1"   stroke-opacity="0.20" />
+  <line x1="465.1" y1="471.2" x2="509.9" y2="533.8" stroke="#1a2f5e" stroke-width="1"   stroke-opacity="0.20" />
+  <line x1="213.8" y1="578.5" x2="184.5" y2="640.1" stroke="#1a2f5e" stroke-width="1"   stroke-opacity="0.20" />
+
+  <!-- Highlighted path -->
+  <line x1="275.4" y1="362.2" x2="171.3" y2="435.1" stroke="#1a2f5e" stroke-width="2.5" stroke-opacity="0.65" />
+  <line x1="165.1" y1="471.2" x2="209.9" y2="533.8" stroke="#1a2f5e" stroke-width="2.5" stroke-opacity="0.65" />
+  <line x1="236.2" y1="578.5" x2="263.8" y2="636.5" stroke="#1a2f5e" stroke-width="2.5" stroke-opacity="0.65" />
+
+  <!-- Ghost leaf circles -->
+  <circle cx="345" cy="660" r="18" fill="#f4f0e6" stroke="#1a2f5e" stroke-width="1"   stroke-opacity="0.12" />
+  <circle cx="405" cy="660" r="18" fill="#f4f0e6" stroke="#1a2f5e" stroke-width="1"   stroke-opacity="0.10" />
+  <circle cx="483" cy="660" r="18" fill="#f4f0e6" stroke="#1a2f5e" stroke-width="1"   stroke-opacity="0.08" />
+  <circle cx="548" cy="660" r="18" fill="#f4f0e6" stroke="#1a2f5e" stroke-width="1"   stroke-opacity="0.07" />
+
+  <!-- Faded nodes -->
+  <circle cx="450" cy="450" r="26" fill="#f4f0e6" stroke="#1a2f5e" stroke-width="1.5" stroke-opacity="0.22" />
+  <circle cx="75"  cy="555" r="26" fill="#f4f0e6" stroke="#1a2f5e" stroke-width="1.5" stroke-opacity="0.22" />
+  <circle cx="375" cy="555" r="26" fill="#f4f0e6" stroke="#1a2f5e" stroke-width="1.5" stroke-opacity="0.22" />
+  <circle cx="525" cy="555" r="26" fill="#f4f0e6" stroke="#1a2f5e" stroke-width="1.5" stroke-opacity="0.22" />
+  <circle cx="175" cy="660" r="22" fill="#f4f0e6" stroke="#1a2f5e" stroke-width="1.5" stroke-opacity="0.22" />
+
+  <!-- On-path nodes -->
+  <circle cx="150" cy="450" r="26" fill="#f4f0e6" stroke="#1a2f5e" stroke-width="2"   stroke-opacity="0.70" />
+  <circle cx="225" cy="555" r="26" fill="#f4f0e6" stroke="#1a2f5e" stroke-width="2"   stroke-opacity="0.70" />
+
+  <!-- James — root -->
+  <circle cx="300" cy="345" r="30" fill="#1a2f5e" />
+
+  <!-- Guido — found -->
+  <circle cx="275" cy="660" r="34" fill="none" stroke="#1a2f5e" stroke-width="1.2" stroke-opacity="0.30" stroke-dasharray="5,4" />
+  <circle cx="275" cy="660" r="26" fill="#1a2f5e" />
+
+  <!-- Bottom rule + Author -->
+  <line x1="50" y1="735" x2="550" y2="735" stroke="#1a2f5e" stroke-width="1" stroke-opacity="0.15" />
+  <text x="300" y="758" text-anchor="middle" font-family="'Courier New', monospace" font-size="18" fill="#1a2f5e">Igor Benav</text>
+
+</svg>

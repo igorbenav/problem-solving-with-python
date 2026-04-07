@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350">
+  <style>
+    .box { stroke: #ccc; stroke-width: 1; }
+    .highlight { fill: #e6f7ff; }
+    .current { fill: #91d5ff; stroke: #1890ff; stroke-width: 2; }
+    .eliminated { fill: #ffccc7; }
+    text { font-family: sans-serif; text-anchor: middle; }
+    .name { font-size: 14px; }
+    .step { font-size: 10px; fill: #777; }
+    .result { font-size: 14px; font-weight: bold; }
+    .fail { fill: #f44; }
+    .pass { fill: #52c41a; }
+    .caption { font-size: 12px; fill: #666; }
+    .strike { text-decoration: line-through; }
+  </style>
+
+  <rect width="800" height="350" fill="white" />
+  <text x="400" y="25" font-size="16" font-weight="bold">Binary Search - Step 1</text>
+
+      <g transform="translate(170, 50)">
+        <rect width="80" height="40" rx="2" class="box highlight" />
+        <text x="40" y="25" class="name">Ada</text>
+      </g>
+      <g transform="translate(270, 50)">
+        <rect width="80" height="40" rx="2" class="box highlight" />
+        <text x="40" y="25" class="name">Alan</text>
+      </g>
+      <g transform="translate(370, 50)">
+        <rect width="80" height="40" rx="2" class="box highlight" />
+        <text x="40" y="25" class="name">Anders</text>
+      </g>
+      <g transform="translate(470, 50)">
+        <rect width="80" height="40" rx="2" class="box highlight" />
+        <text x="40" y="25" class="name">Bjarne</text>
+      </g>
+      <g transform="translate(570, 50)">
+        <rect width="80" height="40" rx="2" class="box highlight" />
+        <text x="40" y="25" class="name">Brian</text>
+      </g>
+
+      <g transform="translate(170, 110)">
+        <rect width="80" height="40" rx="2" class="box highlight" />
+        <text x="40" y="25" class="name">Charles</text>
+      </g>
+      <g transform="translate(270, 110)">
+        <rect width="80" height="40" rx="2" class="box highlight" />
+        <text x="40" y="25" class="name">Dennis</text>
+      </g>
+      <g transform="translate(370, 110)">
+        <rect width="80" height="40" rx="2" class="box highlight" />
+        <text x="40" y="25" class="name">Donald</text>
+      </g>
+      <g transform="translate(470, 110)">
+        <rect width="80" height="40" rx="2" class="box highlight" />
+        <text x="40" y="25" class="name">Edsger</text>
+      </g>
+      <g transform="translate(570, 110)">
+        <rect width="80" height="40" rx="2" class="box highlight" />
+        <text x="40" y="25" class="name">Frances</text>
+      </g>
+
+      <g transform="translate(170, 170)">
+        <rect width="80" height="40" rx="2" class="box highlight" />
+        <text x="40" y="25" class="name">Guido</text>
+      </g>
+      <g transform="translate(270, 170)">
+        <rect width="80" height="40" rx="2" class="box highlight" />
+        <text x="40" y="25" class="name">Grace</text>
+      </g>
+      <g transform="translate(370, 170)">
+        <rect width="80" height="40" rx="2" class="box current" />
+        <text x="40" y="25" class="name" font-weight="bold">James</text>
+        <text x="40" y="-10" class="step">Check 1</text>
+        <text x="40" y="55" class="result fail">✗</text>
+      </g>
+      <g transform="translate(470, 170)">
+        <rect width="80" height="40" rx="2" class="box eliminated" />
+        <text x="40" y="25" class="name strike">John</text>
+      </g>
+      <g transform="translate(570, 170)">
+        <rect width="80" height="40" rx="2" class="box eliminated" />
+        <text x="40" y="25" class="name strike">Ken</text>
+      </g>
+
+      <g transform="translate(170, 230)">
+        <rect width="80" height="40" rx="2" class="box eliminated" />
+        <text x="40" y="25" class="name strike">Larry</text>
+      </g>
+      <g transform="translate(270, 230)">
+        <rect width="80" height="40" rx="2" class="box eliminated" />
+        <text x="40" y="25" class="name strike">Linus</text>
+      </g>
+      <g transform="translate(370, 230)">
+        <rect width="80" height="40" rx="2" class="box eliminated" />
+        <text x="40" y="25" class="name strike">Margaret</text>
+      </g>
+      <g transform="translate(470, 230)">
+        <rect width="80" height="40" rx="2" class="box eliminated" />
+        <text x="40" y="25" class="name strike">Martin</text>
+      </g>
+      <g transform="translate(570, 230)">
+        <rect width="80" height="40" rx="2" class="box eliminated" />
+        <text x="40" y="25" class="name strike">Niklaus</text>
+      </g>
+
+  <text x="400" y="320" class="caption" text-anchor="middle">Finding "Guido": We check "James" (the middle name).</text>
+  <text x="400" y="340" class="caption" text-anchor="middle">Since "Guido" comes before "James" alphabetically, we've eliminated the second half of the list.</text>
+</svg>
