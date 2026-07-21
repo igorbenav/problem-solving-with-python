@@ -1,24 +1,24 @@
 # The Foundations of Computational Thinking
 
-People assume computer science is about computers the way they assume astronomy is about telescopes. The telescope is the tool. The stars are the subject. In computer science, the computer is the tool. The subject is problems: how to define them precisely, how to solve them efficiently, and occasionally how to prove they can't be solved at all.
+People assume computer science is about computers the way they assume astronomy is about telescopes. The telescope is the tool, but the stars are the subject. In computer science, the computer is the tool - the subject is problems: how to define them precisely, how to solve them efficiently, and occasionally how to prove they can't be solved at all.
 
-This distinction matters because it shapes everything that follows. You could spend a career writing code without doing much computer science. You could do important computer science with almost no code. What defines the field isn't the medium. It's the questions: What exactly is this problem? Is there an algorithm to solve it? Is there a better one?
+This distinction shapes everything that follows: you could spend a career writing code without doing much computer science, and you could do important computer science with no code at all. What defines the field isn't the medium, it's the questions: What exactly is this problem? Is there an algorithm to solve it? Is there a better one? What does it even mean being better?
 
 Let's start with a problem.
 
 ## Finding a Name in a Phone Book
 
-You need to find "Guido" (the creator of Python) in a programmer's phone book with thousands of names. You don't have a search box. How do you do it?
+You need to find "Guido" (the creator of Python) in a programmer's paper phone book with thousands of names, you don't have a search box. How do you do it?
 
 Phone books aren't really used anymore, but the problem maps cleanly to any situation where you're searching a list without built-in search: finding a contact in an old phone, looking up a word in a paper dictionary, scanning a sorted spreadsheet.
 
-One approach: start at the first page. Check the first name. Is it "Guido"? No. Check the second. No. Keep going until you find it or run out of names.
+One approach: start at the first page. Check the first name; is it "Guido"? No. Check the second. No. Keep going until you find it or run out of names.
 
 ![Linear Search Visualization](../images/chapter1/figure-1-1-en.svg)
 
-This works. It will always find the name if it's there. But notice what happens as the phone book grows. A phone book with 1,000 names might require 1,000 checks. A million names: a million checks. If checking one name takes one second, a million-entry city phone book could take nearly two weeks. That's not a practical solution. It's a slow one dressed up as a method.
+This works, it will   find the name if it's there since you're potentially scanning every element in the phone book. But notice what happens as the phone book grows: a phone book with 1,000 names might require 1,000 checks, a million names: a million checks. If checking one name takes one second, a million-entry city phone book could take nearly two weeks assuming you get no sleep. That's a solution, but not a practical one.
 
-Now think about how you actually use a phone book. You don't start at page one. You flip to the middle. You use the fact that the book is alphabetically ordered. Here's a different approach:
+Now think about how you actually use a phone book. You don't start at page one, you flip to roughly the middle. Why is that? We are unconsciously using the fact that the book is alphabetically ordered, and if we're searching for a name that starts with "M" it's probably closer to the center. Let's also use this fact in our method:
 
 1. Open to the middle of the phone book
 2. Check the name at that position
@@ -50,25 +50,29 @@ Let's compare the two approaches across phone books of different sizes:
 
 ![Search Algorithms Comparison](../images/chapter1/figure-1-6-en.svg)
 
-For 8 million names, if each check takes one second: the first approach takes at most 8 million seconds (over three months). The second takes at most 23 seconds. Both approaches are correct. The difference is whether one is usable.
+For 8 million names, if each check takes one second: the first approach takes at most 8 million seconds (over three months), the second takes at most 23 seconds. Both approaches are correct, but one of them is actually usable.
 
-> Each time you double the phone book's size, the first approach takes twice as long. The second only needs one more step. This is what computer scientists call *logarithmic scaling*, one of the most powerful ideas in algorithm design.
+Notice what "better" actually meant there. Not that binary search wins on one particular phone book - it's that as the book grows, binary search's cost barely grows with it, while linear search's climbs right alongside the size. That's almost always what we mean when we call one algorithm better than another: not that it's faster on some specific input, but that it's slower to get worse as the input grows. It's a small shift in the question - from "how long does this take?" to "how does the cost grow as the problem grows?". We'll come back to it later with a language of its own.
 
-We've been talking about "approaches" and "methods." Computer science has a precise word for what we've described: an **algorithm**. And the difference between the two algorithms we've seen reveals something that matters for everything that follows.
+> Each time you double the phone book's size, the first approach takes twice as long, the second only needs one more step. This is what computer scientists call *logarithmic scaling*, one of the most powerful ideas in algorithm design.
+
+We've been talking about "approaches" and "methods." Computer science has a precise word for what we've described: an **algorithm**.
 
 ## What Makes an Algorithm?
 
-Both phone book approaches share certain properties. They're sequences of steps. They take an input (a name to find, a phone book to search). They produce an output (the name's location, or the fact that it's not there). They terminate: you always finish, whether or not the name exists.
+Both phone book approaches share certain properties: they're sequences of steps, they take an input (a name to find, a phone book to search), they produce an output (the name's location, or the fact that it's not there), they terminate: you always finish, whether or not the name exists.
 
-That's what an **algorithm** is: a finite, well-defined sequence of computational steps that takes an input and produces an output. The word "finite" is doing real work. An algorithm must terminate. A sequence of steps that runs forever isn't a solution; it's a broken process. "Well-defined" matters too. Each step must be unambiguous: precise enough that a machine (or a person following instructions mechanically) could execute it without guessing.
+That's what an **algorithm** is: a finite, well-defined sequence of computational steps that takes an input and produces an output. The word "finite" is important here: an algorithm must terminate. "Well-defined" is also important: each step must be unambiguous: precise enough that a machine (or a person following instructions mechanically) could execute it without guessing.
 
-The phone book showed us two algorithms for the same problem. The first is called **linear search**: check each element in sequence. The second is called **binary search**: use the sorted structure to halve the search space at every step. Both are correct. One is dramatically better. That gap matters: for small inputs, efficiency barely matters, but for large inputs, algorithm choice determines whether a solution is practical at all.
+The phone book showed us two algorithms for the same problem - the first is called **linear search**: check each element in sequence, the second is called **binary search**: use the sorted structure to halve the search space at every step. Both are correct but one is dramatically better for our use-case. For small inputs, efficiency barely matters, but for large inputs, algorithm choice determines whether a solution is practical at all.
 
-Binary search also reveals something subtler. It works because the phone book is sorted. If names were in random order, you couldn't discard half the book with each comparison. The structure of the data enabled a shortcut. This pattern shows up everywhere: finding structure in your problem often unlocks better algorithms.
+Let's think about the two questions we just asked about these algorithms. First: is it correct - does it actually produce the right answer, every time, not just on the examples we happened to try? Both of our searches pass this one. Second: how does it scale - what happens to its cost as the input grows? Here the two split apart completely. Almost everything you'll do from here on is some version of these two questions: get it right, then get it to scale.
 
-But there's a gap between understanding an algorithm and being able to explain it precisely. You followed binary search intuitively. Could you write it down well enough for someone who has never seen a phone book?
+Binary search also reveals something subtler: it works because the phone book is sorted. If names were in random order, you couldn't discard half the book with each comparison, so the structure of the data enabled a shortcut. You'll see this pattern showing up everywhere: finding structure in your problem often unlocks better algorithms. The algorithm and the way the data is arranged aren't separate concerns - they're two halves of the same thing. The right structure is often what makes the algorithm you want possible in the first place. A big part of what's ahead is really about organizing data so that the good algorithms open up to you - lists, dictionaries, sets, and the rest make better solutions possible.
 
-## The Precision Gap
+But understanding an algorithm and being able to explain it precisely are two different things. You followed binary search intuitively, but could you write it down well enough for someone who has never seen a phone book?
+
+## On Precision
 
 Consider an algorithm for making a sandwich:
 
@@ -78,54 +82,54 @@ Consider an algorithm for making a sandwich:
 4. Place the second slice on top
 5. Cut the sandwich in half
 
-A human understands this instantly. But read it again as if you've never seen a sandwich. Which side of the bread gets the mayonnaise? How much? How should the tomato be sliced? Where does each ingredient go? What does "cut in half" mean: diagonally? Down the middle?
+A human understands this instantly, but read it again as if you've never seen a sandwich. Which side of the bread gets the mayonnaise? How much? How should the tomato be sliced? Where does each ingredient go? What does "cut in half" mean: diagonally? Down the middle?
 
-You fill in these gaps without thinking. You've made sandwiches, you know what bread is, you have common sense. A computer has none of that. It needs exact quantities, exact positions, exact actions. Every unstated assumption, every common-sense inference, has to be made explicit.
+You fill in these gaps without even thinking; you've made sandwiches, you know what bread is, you have common sense - a computer has none of that. It needs exact quantities, exact positions, exact actions. Every unstated assumption, every common-sense inference, has to be made explicit.
 
-Go back to binary search. "Open to the middle of the phone book" is clear enough for you. But a computer needs to know: how do you compute "the middle" of a list? If the list has an even number of entries, which of the two middle entries do you check? When you "discard the second half," do you include the entry you checked, or not? These details don't change whether the algorithm works in principle, but they're the difference between an idea and an implementation.
+Go back to binary search. "Open to the middle of the phone book" is clear enough for you. But a computer needs to know: how do you compute "the middle" of a list? If the list has an even number of entries, which of the two middle entries do you check? When you "discard the second half," do you include the entry you checked, or not? These details don't change whether the algorithm works in principle, but they're the difference between a rough spec and an actual implementation, you'll need to deal with these things.
 
-This is what makes programming difficult when you're starting out. It's not that the problems are hard. It's that you're shifting from implicit to explicit: you have to say what you mean completely, not rely on the reader to fill in the rest. A machine that follows instructions exactly (with no assumptions, no improvisation) can do it billions of times without fatigue. But it will only do exactly what you said, not what you meant.
+This is what makes programming difficult when you're starting out, you're shifting from implicit to explicit: you have to say what you mean completely, not rely on the reader to fill in the rest. A machine that follows instructions exactly (with no assumptions, no improvisation) can do it billions of times without fatigue. But it will only do exactly what you said, not what you meant.
 
-The phone book gave us two algorithms and showed that algorithm choice matters. The sandwich showed that precision matters. But what happens when the problem is bigger than a single search?
+Our search problem had a really simple scope, but what happens when the problem is bigger than a single search?
 
 ## Breaking Problems Apart
 
-Finding a name in a phone book is one task. Building a contacts app involves many: adding new contacts, sorting them, searching by name, searching by number, handling duplicates, displaying results. Each of these is its own problem with its own algorithm. The skill is recognizing where a large problem divides into smaller, independent pieces.
+Finding a name in a phone book is one task, building a contacts app involves many: adding new contacts, sorting them, searching by name, searching by number, handling duplicates, displaying results. Each of these is its own problem with its own algorithm. the skill is recognizing where a large problem divides into smaller, independent pieces.
 
-This is **decomposition**: breaking a complex problem into subproblems, each manageable on its own. It mirrors what binary search does to the phone book (split the problem in half, solve the smaller version), but applied to the problem's structure rather than its data. A hard problem is often several easier problems stacked together.
+This is called **decomposition**: breaking a complex problem into subproblems, each manageable on its own. It mirrors what binary search does to the phone book (split the problem in half, solve the smaller version), but applied to the problem's structure rather than its data. A hard problem is often several easier problems stacked together.
 
 Decomposition alone isn't enough, though. Once you've broken a problem into pieces, you need a way to work on each piece without drowning in the details of all the others.
 
 ## Abstraction
 
-When you described binary search to a friend, you probably said something like "open to the middle, check the name, throw away half." You didn't explain how pages work, how your eyes scan text, or how alphabetical ordering is defined. You worked at a level where those details didn't matter.
+When you described binary search to a friend, you probably said something like "open to the middle, check the name, throw away half." You didn't explain how pages work or how alphabetical ordering is defined. You worked at a level where those details didn't really matter to understand the whole.
 
 This is **abstraction**: hiding what you don't need to think about so you can focus on what you do.
 
-When you use a smartphone, you don't think about transistors or voltage levels or memory addresses. You tap an icon. The icon is an abstraction: an interface that hides enormous complexity underneath. You don't need to understand what's happening at the hardware level to use the app. The abstraction lets you work at a higher level.
+When you use a smartphone, you don't think about transistors or voltage levels or memory addresses, you simply tap an icon. The icon is an abstraction: an interface that hides enormous complexity underneath. You don't need to understand what's happening at the hardware level to use the app, the abstraction lets you work at a higher level.
 
-Programming languages work the same way. When you call `print()` in Python, you're not writing the machine instructions that move characters to a screen buffer. You're using an abstraction that handles all of that for you. Python itself is an abstraction over assembly code, which is an abstraction over machine code, which is an abstraction over electrical signals running through the processor.
+Programming languages work the same way. When you call `print()` in Python, you're not writing the machine instructions that move characters to a screen buffer, you're using an abstraction that handles all of that for you. Python itself is an abstraction over assembly code, which is an abstraction over machine code, which is an abstraction over electrical signals running through the processor.
 
-Binary search has layers too. At the top: "halve the search space until you find the target." One level down: "compare the target to the middle element and decide which half to keep." One level further: "compute the index of the middle element given the current bounds." You can think about the strategy without thinking about index arithmetic, and you can think about index arithmetic without thinking about how memory stores the list. Each layer trusts the one below it.
+Binary search has layers too. At the top: "halve the search space until you find the target". One level down: "compare the target to the middle element and decide which half to keep". One level further: "compute the index of the middle element given the current bounds". You can think about the strategy without thinking about index arithmetic, and you can think about index arithmetic without thinking about how memory stores the list. Each layer trusts the one below it.
 
-This layering is how complex systems get built at all. You can work at one level without understanding the levels below. When you need to go deeper, you can. Most of the time, the abstraction holds and you don't have to.
+This layering is how complex systems can get built at all: you can work at one level without understanding (or even having to think about) the levels below. When you need to go deeper, you can, but most of the time, the abstraction holds and you don't have to.
 
-We've been describing algorithms in words and diagrams. At some point they need to run on a computer. That requires translating them into a language a computer can execute.
+We've been describing algorithms in words and diagrams, but at some point they need to run on a computer. That requires translating them into a language a computer can execute.
 
 ## From Algorithms to Programs
 
-An **algorithm** is a logical sequence of steps to solve a problem: language-independent, the idea itself. A **program** is that algorithm implemented in a specific programming language: one particular expression of the idea.
+An **algorithm** is a logical sequence of steps to solve a problem: language-independent, the idea itself; a **program** is that algorithm implemented in a specific programming language: one particular expression of the idea.
 
-Binary search is an algorithm. You could implement it in Python, Java, C++, or any other language. The algorithm stays the same; the syntax changes. Programming is the act of transcribing an algorithm into a language a computer can execute. Without a clear algorithm, you're not writing a program; you're improvising in code, which produces software that works by accident and fails in ways you don't understand.
+Binary search is an algorithm, and you could implement it in Python, Java, C++, or any other language. The algorithm stays the same; the syntax changes. Programming is the act of transcribing an algorithm into a language a computer can execute.
 
-This wasn't always done in high-level languages. Early programmers gave instructions directly in machine code: the ones and zeros the processor actually understands. A program to display "Hello, World!" in machine code looks like this:
+This wasn't always done in high-level languages though, early programmers gave instructions directly in machine code: the ones and zeros the processor actually understands. A program to display "Hello, World!" in machine code looks like this:
 
 ```
 B4 03 CD 10 B0 01 B3 0A B9 0D 00 BD 13 01 B4 13 CD
 10 C3 48 65 6C 6C 6F 2C 20 57 6F 72 6C 64 21 0D 0A
 ```
 
-Broken down, those hexadecimal codes represent specific processor instructions:
+Broken down, those hexadecimal codes represent specific processor instructions (This is real-mode DOS assembly, from back when programmers worked this close to the metal - it's here to look at, not to run. It won't execute on a modern 64-bit machine as-is):
 
 ```
 B4 03      ; MOV AH, 03h    (Get cursor position)
@@ -145,15 +149,15 @@ And the text data itself, encoded as numbers:
 48 65 6C 6C 6F 2C 20 57 6F 72 6C 64 21 0D 0A
 ```
 
-You don't need to understand this. You need to feel the gap between that and the Python equivalent:
+You don't need to understand this, you need to feel the gap between that and the Python equivalent:
 
 ```python
 print("Hello, World!")
 ```
 
-Same result. One line versus dozens of cryptic instructions. That gap is what high-level programming languages exist to close (and it's abstraction at work: `print()` hides all of that machine-level complexity behind a single word).
+Same result, one line versus dozens of cryptic instructions. That gap is what high-level programming languages exist to close (and it's abstraction at work: `print()` hides all of that machine-level complexity behind a single word).
 
-Here's another example. This algorithm finds the maximum value in a list:
+Here's another example, this algorithm finds the maximum value in a list:
 
 1. Start with the first number as the current maximum
 2. For each remaining number, if it's larger than the current maximum, it becomes the new maximum
@@ -178,9 +182,9 @@ my_numbers = [42, 17, 8, 94, 23, 61]
 print(f"The maximum value is {find_maximum(my_numbers)}")
 ```
 
-The algorithm is the logic. The Python code is one way to express it. Keeping these separate in your head matters: when your program gives the wrong answer, the problem is either in the algorithm (the logic is wrong) or in the implementation (the code doesn't correctly express the logic). Those are different bugs with different fixes, and you won't find either one by staring at the wrong thing.
+The algorithm is the logic, the Python code is one way to express it. Keeping these separate in your head is important because when your program gives the wrong answer, the problem is either in the algorithm (the logic is wrong) or in the implementation (the code doesn't correctly express the logic) - different bugs with different fixes.
 
-The choice of which language to use is a separate question, and for this book, it's already been made.
+The choice of which language to use is a separate question, and for this book, it's already been made for you.
 
 ## Why Python?
 
@@ -191,31 +195,31 @@ Python was created by Guido van Rossum in the late 1980s. Its central design phi
 - Simple is better than complex
 - Readability counts
 
-These aren't aesthetic preferences. They make Python code read like pseudocode: instructions close enough to plain English that the algorithm is visible in the implementation. For learning, that's valuable. You can focus on the problem without fighting the language.
+These rules make Python code read a lot like pseudocode: instructions close enough to plain English that the algorithm is visible in the implementation. For learning, that's valuable; you can focus on the problem without fighting the language.
 
-Python is also practical. It's the dominant language in data science, machine learning, scientific computing, and automation. Learning it doesn't teach you to program; it gives you access to a vast ecosystem of tools built by other people solving related problems.
+Python is also practical since it's the dominant language in data science, machine learning, scientific computing, and automation. Learning it doesn't only teach you to program; it gives you access to a vast ecosystem of tools built by other people solving related problems.
 
-It has real limitations, and it's worth being honest about them. Python is interpreted: it's translated to machine instructions at runtime rather than compiled in advance. Compiled languages like C++ or Rust are typically much faster. For most applications this doesn't matter, but for performance-critical systems, it does. Python also has a mechanism called the Global Interpreter Lock (the **GIL**) that allows only one thread to execute Python code at a time, which limits certain kinds of parallel processing. And some domains (mobile apps, game engines, low-level systems programming) are better served by other languages. Every language is a tradeoff. Python is optimized for programmer productivity and the scientific and data ecosystem.
+It has real limitations though, and you should know them to be able to decide when it's the best option. Python is interpreted: instead of being compiled all the way to machine code ahead of time, your code is translated into an intermediate form (called bytecode) and executed step by step as it runs. That extra work at runtime is a big part of why compiled languages like C++ or Rust are typically much faster. For most applications this doesn't matter, but for performance-critical or low-resource systems, it does. Python also has a mechanism called the Global Interpreter Lock (the **GIL**) that allows only one thread to execute Python code at a time, which limits certain kinds of parallel processing. Note that the GIL can be disabled since python 3.13, but it will take some time until packages adapt and fix the bugs that the GIL was previously suppressing. And some domains (mobile apps, game engines, low-level systems programming) are better served by other languages. Every language is a tradeoff, python is optimized for programmer productivity and the scientific and data ecosystem.
 
-Professional programmers typically know several languages and choose based on the problem. The concepts you'll learn here (algorithms, data structures, abstraction) apply in any language. Python is a clear place to start.
+Professional programmers typically know several languages and choose based on the problem. The concepts you'll learn here (algorithms, data structures, abstraction) apply in any language, python is a clear place to start.
 
-The concepts matter more than the tool. Which raises one more question: what kinds of problems can these concepts actually solve?
+We know that the concepts matter more than the tool, but this raises one more question: what kinds of problems can these concepts actually solve?
 
 ## What Makes a Problem Computational?
 
-Not every problem can be solved with an algorithm. We've been working with "find a name in a phone book," which is clearly solvable: there's a finite list, a defined target, and a procedure that terminates. But consider "what is the most beautiful painting?" There's no unambiguous definition of "beautiful," no finite set of candidates everyone agrees on, and no procedure that would produce an answer everyone accepts. It's not a computational problem.
+Not every problem can be solved with an algorithm. We've been working with "find a name in a phone book," which is clearly solvable: there's a finite list, a defined target, and a procedure that terminates, but consider "what is the most beautiful painting?" - there's no unambiguous definition of "beautiful," no finite set of candidates everyone agrees on, and no procedure that would produce an answer everyone accepts. It's not a computational problem.
 
 For a problem to be computational, it needs to be well-defined (the problem statement is clear and unambiguous), solvable (there exists a finite sequence of steps that reaches an answer), and finite (the solution must terminate). "What is the sum of all integers from 1 to 100?" is computational. "What career would make someone happiest?" is not.
 
-**Computational thinking** is the practice of reformulating problems so they become solvable algorithmically. This often involves ignoring irrelevant details (abstraction), breaking the problem into pieces (decomposition), and recognizing when a new problem resembles one you've already solved (pattern recognition). It's the collection of skills we've been building throughout this chapter, applied deliberately.
+**Computational thinking** is the practice of reformulating problems so they become solvable algorithmically. This often involves ignoring irrelevant details (abstraction), breaking the problem into pieces (decomposition), and recognizing when a new problem resembles one you've already solved (pattern recognition). It's the collection of concepts we've been defining throughout this chapter, applied deliberately.
 
-The phone book showed us all of this in miniature. We started with a problem. We found two algorithms and discovered that the choice between them matters enormously. We saw that the data's structure (sorted order) enabled the better algorithm. We noticed that describing an algorithm precisely enough for a machine requires closing the gap between human intuition and explicit instructions. We used decomposition and abstraction to manage complexity. And we distinguished the algorithm (the idea) from the program (its implementation in a specific language).
+The phone book showed us all of this in miniature: we started with a problem, we found two algorithms and discovered that the choice between them matters enormously, then we saw that the data's structure (sorted order) enabled the better algorithm. We also used decomposition and abstraction to manage complexity, then distinguished the algorithm (the idea) from the program (its implementation in a specific language).
 
-These are the ideas the rest of the book applies. In the next chapter, we move from theory to practice: setting up Python and writing actual programs. The thinking here is what makes that code meaningful.
+These are the ideas the rest of the book applies. In the next chapter, we move from theory to practice: setting up Python and writing actual programs, but always starting with the thinking.
 
 ## Chapter Summary
 
-Computer science is primarily about solving problems, not about computers. The phone book made the stakes concrete: linear search and binary search both find the name, but at scale the difference between them is the difference between seconds and months. Algorithm choice dominates.
+Computer science is primarily about solving problems, not about computers. The phone book made the stakes concrete: linear search and binary search both find the name, but at scale the difference between them is the difference between seconds and months; algorithm choice dominates.
 
 An algorithm is a finite, well-defined sequence of steps that takes an input and produces an output. "Finite" and "well-defined" are both essential. Binary search also showed that the structure of the data (sorted order) enabled the better algorithm. Finding structure in your problem is often what unlocks a better solution.
 
@@ -223,7 +227,7 @@ The sandwich example exposed the precision gap: humans tolerate vague instructio
 
 Algorithms are language-independent descriptions of solutions. Programs are their implementation in a specific language. Keeping those two things distinct makes debugging much cleaner: when something goes wrong, is the logic flawed or did the code fail to express the logic correctly?
 
-In the next chapter, we set up Python and write actual programs. The exercises below are worth doing even if they seem obvious. They're not testing what you know. They're wiring the circuits.
+In the next chapter, we set up Python and write actual programs. The exercises below are worth doing even if they seem obvious; they're not testing what you know, but wiring the circuits.
 
 ## Exercises
 
