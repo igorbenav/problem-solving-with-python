@@ -1,46 +1,45 @@
 # Preface {.unnumbered}
 
-Beginner programming books usually teach you a language. They walk through syntax, show you features, and hope problem-solving follows, but it usually doesn't. You finish the book knowing what a `for` loop is but not necessarily when to use one. You can read code but can't design a solution from scratch.
+Beginner programming books usually teach you a language - they walk through the syntax and the features and hope problem-solving follows, but it usually doesn't. You finish knowing what a `for` loop is without quite knowing when to reach for one, able to read code someone else wrote and stuck the moment you face an empty file.
 
-This book reverses the order. We start with problems and introduce Python as the tool to solve them, with every concept existing because a problem demands it, not because it's the next item in a language tour. The goal isn't to memorize syntax, it's to think clearly enough about a problem that the code follows naturally.
+This book starts from problems instead, with Python introduced as the tool to solve them - every concept arrives when a problem demands it rather than when a language tour happens to reach it. The aim is to think clearly enough about a problem that the code follows on its own.
 
-This is more important now than it was some years ago. AI tools like ChatGPT can generate working code from a prompt, which means the bottleneck in programming has shifted. Syntax is no longer the hard part - knowing what to ask for, evaluating whether the result is correct, and understanding why an approach fails at scale: that's the hard part. This book builds those skills. Using AI to help write code is perfectly fine, but you should be able to judge whether a solution is good or broken, and know what to do about it.
+This matters more now than it did a few years ago, because AI tools like ChatGPT can generate working code from a prompt, and that moved the difficulty somewhere else: syntax got cheap, while knowing what to ask for stayed expensive, along with the judgment to tell a good solution from one that stops working the moment the input gets big - and building that judgment is what this book is after. Using AI to help write code is perfectly fine - as long as you can look at what it produced, decide whether it's good or broken, and know what to do about it. The basic rule is: if you don't even know what to ask AI to find problems, you shouldn't be using it.
 
 ## About This Book {.unnumbered}
 
-The book is opinionated. We use Python throughout, uv for package management, and the REPL for quick experiments. We're not surveying every language feature or teaching you the "best" way, we're teaching you one coherent path from "I've never programmed" to "I can solve real problems with code," so you have solid ground to stand on when you explore other directions later.
+The book is opinionated: we use Python throughout, uv for package management, and the REPL for quick experiments. Rather than survey everything Python can do, it commits to one path, from "I've never programmed" to "I can solve real problems with code," so you have solid ground to stand on when you branch out later.
 
-Computer science concepts (algorithms, abstraction, decomposition) aren't treated as background reading, they're introduced when the problem at hand requires them. You'll understand binary search not because the chapter is titled "Algorithms" but because you're trying to find a name in a phone book and the obvious approach is too slow.
+Computer science ideas like algorithms, abstraction, and decomposition show up at the moment they start mattering: you'll understand binary search not because a chapter is titled "Algorithms" but because you're trying to find a name in a phone book and the obvious approach is too slow.
+
+One trade runs through the whole book: you can usually make a program faster by letting it remember more, and make it use less memory by letting it redo work. The early chapters bump into this trade by accident; around the middle of the book you get the standard language for measuring it, and "is this solution any good" turns into a question with an actual answer.
 
 ## What You'll Build {.unnumbered}
 
-The book follows a single thread: a receipt printer that starts simple and grows more capable as you learn new concepts. It's not a toy example. It's a program that hits a real wall at the end of every chapter, and the next chapter's concepts are what you need to break through.
+The book follows a single program: a receipt printer, started in Chapter 2 and still growing in the final chapter. At the end of each chapter it hits a wall - something it genuinely can't do yet - and the next chapter exists because of that wall.
 
-In Chapter 2, you build the first version: collecting input, storing it in variables, and printing formatted text. It works, but it can't calculate a total because `input()` returns strings and strings can't do math. That wall motivates Chapter 3, where you learn about types and conversion. Now the receipt computes totals, applies tax, and formats currency.
+In Chapter 2 you build the first version, which asks for a store name, an item, a quantity, a price, and prints something that looks like a receipt. What it can't do is math: `input()` hands you text, and the total stays uncalculated. Chapter 3 fixes that with types and conversion, and the receipt gets a real total at the bottom, tax included.
 
-But it handles exactly three items, hardcoded. That motivates Chapter 4 (conditionals: skip items with zero quantity, apply discounts based on the subtotal) and Chapter 5 (loops: handle any number of items without duplicating code). Each chapter solves the previous chapter's limitation and reveals the next one.
+But everything is hardcoded at exactly three items, which is what Chapter 4's conditionals start to fix: the receipt reacts to what it's given, skipping a zero-quantity item, discounting a large subtotal. Then Chapter 5 brings loops, and the three-item limit disappears entirely.
 
-By the end of the book, you'll have built programs that take input, make decisions, repeat actions, work with structured data, and solve problems you couldn't have approached at the start. More importantly, you'll have a way of thinking about problems that works whether you're writing Python, learning another language, or telling an AI what to build.
+By the later chapters the receipt has a product catalog behind it, an undo for mistakes, sales records that survive a restart, and error handling that shrugs off garbage input; near the end it gets reorganized into a packaged project with proper classes. Then the final chapter drops the guided thread: you get a fresh problem, no receipt in sight, and you solve it from scratch the way the whole book taught - understand it first, build the obvious version, measure where it strains, reach for the structures that fix it, and finish knowing what your solution costs. The same habit carries into other languages, and into telling an AI what to build and then judging what comes back.
 
 ## How to Use This Book {.unnumbered}
 
-The chapters are meant to be read in order, each one builds on the previous. If you skip types, the chapter on conditionals won't make sense. If you skip conditionals, you'll be lost when loops arrive.
+The chapters are meant to be read in order, each one builds on the previous. If you skip types, conditionals won't make sense; skip conditionals and loops will lose you. And this applies even if you already know some Python - the chapters aren't organized around syntax, they're organized around problems, so a chapter you skip isn't just a feature you already know, it's a wall you never hit and a fix you never needed. Skim fast where the code is familiar, don't skip.
 
-Each chapter opens with a problem you can't solve yet. By the end, you can. The concepts exist because the problem demands them: we understand the motivation, see the concept expressed in Python, and then apply it in a hands-on project that extends the running receipt printer (or a related program). This structure was deliberate, it means you always know *why* you're learning something before you learn *how*.
+Each chapter opens with a problem you can't solve yet and closes once you can. Inside a chapter the order is always motivation first: the problem we're facing, then the Python that addresses it, then a hands-on where it goes into the receipt printer (or a neighboring program) - so you'll know why something exists before you're asked to use it.
 
-Type the code yourself, don't copy and paste. The errors you make and fix along the way are part of learning. Change things, break things, see what happens.
+Type the code yourself instead of pasting it - the mistakes you make along the way are half the lesson - and mess with things while you're at it: change a number, delete a line, read what Python complains about.
 
-When you get stuck, resist asking AI for the solution. Ask for a hint if you need to, but do the thinking yourself - that's the part you CAN'T delegate. Struggling is normal, it's also how you actually learn, rather than feeling like you're learning.
-
-One recommendation: don't use an AI-assisted editor like Cursor or Copilot yet. They'll write code for you before you understand what you're writing. Use a plain editor until you can evaluate what the AI produces.
+When you get stuck, resist asking AI for the solution - a hint is fine if you need one, but do the thinking yourself, because that's the part you *can't* delegate. Struggling is normal; it's also the difference between actually learning and just feeling like you are. Chapter 2 makes a related recommendation during setup: no AI-assisted editors until you can judge what they produce.
 
 ## Prerequisites {.unnumbered}
 
-This book assumes no prior programming experience. You'll need:
+This book assumes no prior programming experience, and the equipment list is short:
 
 - A computer running Windows, macOS, or Linux
-- Python 3.9 or newer installed (instructions are provided in Chapter 2)
 - A code editor (VS Code works well)
 - Willingness to experiment and read error messages instead of panicking
 
-Even if you've never written a line of code before, this book will get you there. Chapter 1 starts with what computer science actually is. Chapter 2 gets Python running.
+Even if you've never written a line of code before, this book will get you there. Chapter 1 starts with what computer science actually is, Chapter 2 gets Python running.
