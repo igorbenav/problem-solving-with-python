@@ -4,7 +4,7 @@
 
 From Computational Thinking to Programs with Python.
 
-<a href="docs/en/Practical%20Problem%20Solving%20(en).pdf">
+<a href="docs/en/Practical-Problem-Solving.pdf">
    <img src="https://github.com/igorbenav/problem-solving-with-python/blob/main/en/images/cover.png" width="30%" alt="Book Cover">
 </a>
 
@@ -12,7 +12,7 @@ An open book that teaches programming by starting with problems. Every concept e
 
 No prior programming experience needed.
 
-**[Read the English version (PDF)](docs/en/Practical%20Problem%20Solving%20(en).pdf)**
+**[Read the English version (PDF)](docs/en/Practical-Problem-Solving.pdf)**
 
 </div>
 
@@ -83,7 +83,9 @@ problem-solving-with-python/
 │   │   ├── chapter3.qmd
 │   │   └── chapter4.qmd
 │   ├── images/                  # Figures (language-specific)
-│   │   └── chapter1/
+│   │   ├── chapter1/
+│   │   ├── chapter2/
+│   │   └── chapter3/
 │   └── code/                    # Completed code per chapter
 │       └── chapter1/
 ├── docs/                        # Rendered output
