@@ -52,7 +52,7 @@ Let's compare the two approaches across phone books of different sizes:
 
 For 8 million names, if each check takes one second: the first approach takes at most 8 million seconds (over three months), the second takes at most 23 seconds. Both approaches are correct, but one of them is actually usable.
 
-Notice what "better" actually meant there. Not that binary search wins on one particular phone book - it's that as the book grows, binary search's cost barely grows with it, while linear search's climbs right alongside the size. That's almost always what we mean when we call one algorithm better than another: not that it's faster on some specific input, but that it's slower to get worse as the input grows. It's a small shift in the question - from "how long does this take?" to "how does the cost grow as the problem grows?". We'll come back to it later with a language of its own.
+Notice what "better" actually meant there: not that binary search wins on one particular phone book - it's that as the book grows, binary search's cost barely grows with it, while linear search's climbs right alongside the size. That's almost always what we mean when we call one algorithm better than another: not that it's faster on some specific input, but that it's slower to get worse as the input grows. It's a small shift in the question - from "how long does this take?" to "how does the cost grow as the problem grows?". We'll come back to it later with a language of its own. Steps aren't the only thing a solution spends, either - memory is the other one. A recurring move in everything ahead is trading one for the other: spending some memory to make an algorithm faster, or accepting more steps to use less space.
 
 > Each time you double the phone book's size, the first approach takes twice as long, the second only needs one more step. This is what computer scientists call *logarithmic scaling*, one of the most powerful ideas in algorithm design.
 
@@ -68,7 +68,7 @@ The phone book showed us two algorithms for the same problem - the first is call
 
 Let's think about the two questions we just asked about these algorithms. First: is it correct - does it actually produce the right answer, every time, not just on the examples we happened to try? Both of our searches pass this one. Second: how does it scale - what happens to its cost as the input grows? Here the two split apart completely. Almost everything you'll do from here on is some version of these two questions: get it right, then get it to scale.
 
-Binary search also reveals something subtler: it works because the phone book is sorted. If names were in random order, you couldn't discard half the book with each comparison, so the structure of the data enabled a shortcut. You'll see this pattern showing up everywhere: finding structure in your problem often unlocks better algorithms. The algorithm and the way the data is arranged aren't separate concerns - they're two halves of the same thing. The right structure is often what makes the algorithm you want possible in the first place. A big part of what's ahead is really about organizing data so that the good algorithms open up to you - lists, dictionaries, sets, and the rest make better solutions possible.
+Binary search also reveals something subtler: it works because the phone book is sorted. If names were in random order, you couldn't discard half the book with each comparison, so the structure of the data enabled a shortcut. You'll see this pattern showing up everywhere: finding structure in your problem often unlocks better algorithms. The algorithm and the way the data is arranged aren't separate concerns - they're two halves of the same thing. The right structure is often what makes the algorithm you want possible in the first place. A big part of what's ahead is really about organizing data so that the good algorithms open up to you - lists, dictionaries, sets, and the rest make better solutions possible. That structure wasn't free, though - someone sorted the book once so that every search afterward could be cheap. Paying a cost up front to make repeated work fast is a trade you'll see constantly.
 
 But understanding an algorithm and being able to explain it precisely are two different things. You followed binary search intuitively, but could you write it down well enough for someone who has never seen a phone book?
 
@@ -96,7 +96,7 @@ Our search problem had a really simple scope, but what happens when the problem 
 
 Finding a name in a phone book is one task, building a contacts app involves many: adding new contacts, sorting them, searching by name, searching by number, handling duplicates, displaying results. Each of these is its own problem with its own algorithm. the skill is recognizing where a large problem divides into smaller, independent pieces.
 
-This is called **decomposition**: breaking a complex problem into subproblems, each manageable on its own. It mirrors what binary search does to the phone book (split the problem in half, solve the smaller version), but applied to the problem's structure rather than its data. A hard problem is often several easier problems stacked together.
+This is called **decomposition**: breaking a complex problem into subproblems, each manageable on its own. It mirrors what binary search does to the phone book - split the problem in half, solve the smaller version, a strategy common enough to have a name: divide and conquer - but applied to the problem's structure rather than its data.
 
 Decomposition alone isn't enough, though. Once you've broken a problem into pieces, you need a way to work on each piece without drowning in the details of all the others.
 
@@ -233,7 +233,7 @@ In the next chapter, we set up Python and write actual programs. The exercises b
 
 1. Write a detailed algorithm for a common daily task: making breakfast, getting ready in the morning, or anything you do regularly. Be precise enough that someone who has never done it could follow your instructions without guessing. Once you're done, go back and ask: where did you make assumptions? What did you leave implicit that a computer would need stated explicitly? The gap between your first draft and a truly unambiguous version is the gap that programming requires you to close.
 
-2. Using the sorted list of 16 programming languages below, pick any language other than Python and trace both algorithms to find it. For linear search, check each language in order and count the comparisons. For binary search, use divide-and-conquer and count the comparisons. Write out every step of both. The difference in step counts is the point, but try to also articulate *why* binary search needs so many fewer steps.
+2. Using the sorted list of 16 programming languages below, pick any language other than Python and trace both algorithms to find it. For linear search, check each language in order and count the comparisons; For binary search, use divide-and-conquer and count the comparisons, then write out every step of both. The difference in step counts is the point, but try to also articulate *why* binary search needs so many fewer steps.
 
    ```
    1. Ada       5. Cobol    9. JavaScript  13. Python
@@ -242,11 +242,11 @@ In the next chapter, we set up Python and write actual programs. The exercises b
    4. C++       8. Java     12. PHP         16. Swift
    ```
 
-3. Choose one of these complex tasks and break it into subtasks, each precise enough to be its own algorithm: planning a vacation, organizing a birthday party, or writing a research paper. The goal isn't exhaustiveness; it's identifying the natural seams in the problem, the places where a complex task divides into independent pieces. How deep do you need to go before each piece feels manageable?
+3. Choose one of these complex tasks and break it into subtasks, each precise enough to be its own algorithm: planning a vacation, organizing a birthday party, or writing a research paper. The goal is identifying the natural seams in the problem, the places where a complex task divides into independent pieces. How deep do you need to go before each piece feels manageable?
 
 4. For each of the following, decide whether it's computational (solvable by algorithm) or not, and explain your reasoning: (a) finding the shortest route between two cities, (b) determining the most beautiful musical composition, (c) calculating the average temperature for a city over a year, (d) converting currencies based on current exchange rates, (e) deciding which career would make someone happiest. Some of these are less obvious than they first appear.
 
-5. Below is a 28-step grocery shopping trip written out in full. Group the steps into meaningful functions and rewrite the whole trip using only those function names, so the high-level description fits in a few lines. The complexity lives inside the named abstractions, not at the top level. Then ask yourself: does the abstraction actually hide the right things? Are there groupings that feel arbitrary, and why?
+5. Below is a 28-step grocery shopping trip written out in full. Group the steps into meaningful functions and rewrite the whole trip using only those function names, so the high-level description fits in a few lines; the complexity lives inside the named abstractions, not at the top level. Then ask yourself: does the abstraction actually hide the right things? Are there groupings that feel arbitrary, and why?
 
    ```
    1. Write down needed items

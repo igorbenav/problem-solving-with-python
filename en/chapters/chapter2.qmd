@@ -178,7 +178,7 @@ uv init chapter2
 cd chapter2
 ```
 
-`uv init` creates a small project scaffold - a folder with a couple of config files `uv` uses to track your project. You don't need to worry about what's in them yet; we'll look properly in Chapter 11. Create a file called `receipt.py` inside this folder. We'll build it up in pieces.
+`uv init` creates a small project scaffold - a folder with a couple of config files `uv` uses to track your project. You don't need to worry about what's in them yet; we'll look properly in the modules chapter, near the end of the book. Create a file called `receipt.py` inside this folder. We'll build it up in pieces.
 
 Start by collecting the input:
 
