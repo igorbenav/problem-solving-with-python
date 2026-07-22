@@ -19,16 +19,19 @@
   <text x="400" y="67" class="header">Linear Search</text>
   <text x="600" y="67" class="header">Binary Search</text>
 
-  <!-- Rows -->
+  <!-- Row 1 (zebra) -->
+  <rect x="100" y="79" width="600" height="34" class="zebra" />
   <text x="200" y="103" class="data">1,000 names</text>
   <text x="400" y="103" class="data">1,000 checks</text>
   <text x="600" y="103" class="data">10 checks</text>
 
-  <rect x="100" y="113" width="600" height="34" class="zebra" />
+  <!-- Row 2 (plain) -->
   <text x="200" y="135" class="data">1,000,000 names</text>
   <text x="400" y="135" class="data">1,000,000 checks</text>
   <text x="600" y="135" class="data">20 checks</text>
 
+  <!-- Row 3 (zebra) -->
+  <rect x="100" y="147" width="600" height="34" class="zebra" />
   <text x="200" y="167" class="data">8,000,000 names</text>
   <text x="400" y="167" class="data">8,000,000 checks</text>
   <text x="600" y="167" class="data">23 checks</text>
@@ -42,7 +45,6 @@
   <line x1="100" y1="147" x2="700" y2="147" class="rule" />
 
   <!-- Notes -->
-  <text x="400" y="222" class="caption" text-anchor="middle">For the 8 million name phone book, if each check takes 1 second:</text>
-  <text x="400" y="244" class="caption" text-anchor="middle">linear search takes 8 million seconds (over 3 months),</text>
-  <text x="400" y="266" class="caption" text-anchor="middle">while binary search takes 23 seconds.</text>
+  <text x="400" y="230" class="caption" text-anchor="middle">Eight times as many names adds millions of checks to linear search,</text>
+  <text x="400" y="252" class="caption" text-anchor="middle">but only three more steps to binary search. That gap only widens with size.</text>
 </svg>

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340">
+  <style>
+    text { font-family: 'Courier New', 'Courier', monospace; fill: #1a2f5e; }
+    .title { font-size: 16px; font-weight: bold; text-anchor: middle; }
+    .stage { font-size: 15px; font-weight: bold; text-anchor: middle; }
+    .code { font-size: 12px; text-anchor: middle; fill-opacity: 0.75; }
+    .caption { font-size: 12px; opacity: 0.6; text-anchor: middle; }
+    .frame { fill: none; stroke: #1a2f5e; stroke-opacity: 0.15; }
+    .box { fill: #f4f0e6; stroke: #1a2f5e; stroke-width: 1.5; stroke-opacity: 0.35; }
+    .fill { fill: #1a2f5e; fill-opacity: 0.06; }
+    .arrow { fill: none; stroke: #1a2f5e; stroke-width: 2; stroke-opacity: 0.55; }
+    .arrowhead { fill: #1a2f5e; fill-opacity: 0.55; }
+  </style>
+
+  <rect width="800" height="340" fill="#f4f0e6" />
+  <rect x="1" y="1" width="798" height="338" rx="6" class="frame" />
+  <text x="400" y="38" class="title">The Input &#183; Process &#183; Output Loop</text>
+
+  <!-- Input box -->
+  <g transform="translate(60, 90)">
+    <rect width="180" height="120" rx="6" class="box fill" />
+    <text x="90" y="42" class="stage">INPUT</text>
+    <text x="90" y="74" class="code">input("Quantity: ")</text>
+    <text x="90" y="94" class="code">input("Price: ")</text>
+  </g>
+
+  <!-- Arrow 1 -->
+  <path d="M 250 150 L 300 150" class="arrow" />
+  <path d="M 300 150 l -9 -5 l 0 10 z" class="arrowhead" />
+
+  <!-- Process box -->
+  <g transform="translate(310, 90)">
+    <rect width="180" height="120" rx="6" class="box fill" />
+    <text x="90" y="42" class="stage">PROCESS</text>
+    <text x="90" y="74" class="code">build the</text>
+    <text x="90" y="94" class="code">receipt strings</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <path d="M 500 150 L 550 150" class="arrow" />
+  <path d="M 550 150 l -9 -5 l 0 10 z" class="arrowhead" />
+
+  <!-- Output box -->
+  <g transform="translate(560, 90)">
+    <rect width="180" height="120" rx="6" class="box fill" />
+    <text x="90" y="42" class="stage">OUTPUT</text>
+    <text x="90" y="74" class="code">print(...)</text>
+    <text x="90" y="94" class="code">the receipt</text>
+  </g>
+
+  <text x="400" y="268" class="caption">The receipt printer collects values, assembles them into text, and displays the result.</text>
+  <text x="400" y="290" class="caption">Almost every program you write is some version of this three-step loop.</text>
+</svg>
