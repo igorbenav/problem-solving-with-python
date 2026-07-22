@@ -3,23 +3,23 @@
     text { font-family: 'Courier New', 'Courier', monospace; text-anchor: middle; fill: #1a2f5e; }
     .title { font-size: 16px; font-weight: bold; }
     .name { font-size: 14px; }
-    .caption { font-size: 12px; opacity: 0.6; }
+    .caption { font-size: 12px; opacity: 0.88; }
 
-    .box { fill: #f4f0e6; stroke: #1a2f5e; stroke-width: 1.5; stroke-opacity: 0.35; }
-    .current { fill: #1a2f5e; fill-opacity: 0.10; stroke-opacity: 0.85; stroke-width: 2.5; }
-    .eliminated { stroke-opacity: 0.12; }
+    .box { fill: #ffffff; stroke: #1a2f5e; stroke-width: 1.5; stroke-opacity: 0.5; }
+    .current { fill: #1a2f5e; fill-opacity: 0.10; stroke-opacity: 0.9; stroke-width: 2.5; }
+    .eliminated { stroke-opacity: 0.22; }
     .found { fill: #1a2f5e; stroke-opacity: 0; }
-    .ring { fill: none; stroke: #1a2f5e; stroke-width: 1.2; stroke-opacity: 0.35; stroke-dasharray: 5 4; }
-    .strike { stroke: #1a2f5e; stroke-opacity: 0.7; stroke-width: 1.6; }
+    .ring { fill: none; stroke: #1a2f5e; stroke-width: 1.2; stroke-opacity: 0.45; stroke-dasharray: 5 4; }
+    .strike { stroke: #1a2f5e; stroke-opacity: 0.8; stroke-width: 1.6; }
 
-    .faded { fill-opacity: 0.45; }
-    .pending { fill-opacity: 0.4; }
+    .faded { fill-opacity: 0.6; }
+    .pending { fill-opacity: 0.55; }
     .midname { font-weight: bold; }
-    .oncream { fill: #f4f0e6; font-weight: bold; }
-    .frame { fill: none; stroke: #1a2f5e; stroke-opacity: 0.15; }
+    .oncream { fill: #ffffff; font-weight: bold; }
+    .frame { fill: none; stroke: #1a2f5e; stroke-opacity: 0.2; }
   </style>
 
-  <rect width="800" height="410" fill="#f4f0e6" />
+  <rect width="800" height="410" fill="#ffffff" />
   <rect x="1" y="1" width="798" height="408" rx="6" class="frame" />
   <text x="400" y="34" class="title">Binary Search &#183; Step 3</text>
 

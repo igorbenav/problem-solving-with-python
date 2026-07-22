@@ -3,16 +3,16 @@
     text { font-family: 'Courier New', 'Courier', monospace; fill: #1a2f5e; }
     .title { font-size: 16px; font-weight: bold; text-anchor: middle; }
     .stage { font-size: 15px; font-weight: bold; text-anchor: middle; }
-    .code { font-size: 12px; text-anchor: middle; fill-opacity: 0.75; }
-    .caption { font-size: 12px; opacity: 0.6; text-anchor: middle; }
-    .frame { fill: none; stroke: #1a2f5e; stroke-opacity: 0.15; }
-    .box { fill: #f4f0e6; stroke: #1a2f5e; stroke-width: 1.5; stroke-opacity: 0.35; }
+    .code { font-size: 12px; text-anchor: middle; fill-opacity: 0.85; }
+    .caption { font-size: 12px; opacity: 0.88; text-anchor: middle; }
+    .frame { fill: none; stroke: #1a2f5e; stroke-opacity: 0.2; }
+    .box { fill: #ffffff; stroke: #1a2f5e; stroke-width: 1.5; stroke-opacity: 0.5; }
     .fill { fill: #1a2f5e; fill-opacity: 0.06; }
-    .arrow { fill: none; stroke: #1a2f5e; stroke-width: 2; stroke-opacity: 0.55; }
-    .arrowhead { fill: #1a2f5e; fill-opacity: 0.55; }
+    .arrow { fill: none; stroke: #1a2f5e; stroke-width: 2; stroke-opacity: 0.7; }
+    .arrowhead { fill: #1a2f5e; fill-opacity: 0.7; }
   </style>
 
-  <rect width="800" height="340" fill="#f4f0e6" />
+  <rect width="800" height="340" fill="#ffffff" />
   <rect x="1" y="1" width="798" height="338" rx="6" class="frame" />
   <text x="400" y="38" class="title">The Input &#183; Process &#183; Output Loop</text>
 

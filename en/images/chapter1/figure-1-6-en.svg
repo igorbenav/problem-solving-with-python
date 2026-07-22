@@ -3,14 +3,14 @@
     text { font-family: 'Courier New', 'Courier', monospace; fill: #1a2f5e; }
     .header { font-size: 13px; font-weight: bold; text-anchor: middle; }
     .data { font-size: 13px; text-anchor: middle; }
-    .caption { font-size: 12px; opacity: 0.6; }
-    .frame { fill: none; stroke: #1a2f5e; stroke-opacity: 0.15; }
-    .rule { stroke: #1a2f5e; stroke-opacity: 0.2; }
-    .headband { fill: #1a2f5e; fill-opacity: 0.08; }
-    .zebra { fill: #1a2f5e; fill-opacity: 0.03; }
+    .caption { font-size: 12px; opacity: 0.88; }
+    .frame { fill: none; stroke: #1a2f5e; stroke-opacity: 0.2; }
+    .rule { stroke: #1a2f5e; stroke-opacity: 0.28; }
+    .headband { fill: #1a2f5e; fill-opacity: 0.09; }
+    .zebra { fill: #1a2f5e; fill-opacity: 0.05; }
   </style>
 
-  <rect width="800" height="300" fill="#f4f0e6" />
+  <rect width="800" height="300" fill="#ffffff" />
   <rect x="1" y="1" width="798" height="298" rx="6" class="frame" />
 
   <!-- Header band -->
