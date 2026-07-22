@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 378">
+  <style>
+    text { font-family: 'Courier New', 'Courier', monospace; text-anchor: middle; fill: #1a2f5e; }
+    .title { font-size: 16px; font-weight: bold; }
+    .val { font-size: 16px; font-weight: bold; }
+    .op { font-size: 18px; font-weight: bold; }
+    .ann { font-size: 13px; text-anchor: start; }
+    .annsub { font-size: 11px; text-anchor: start; fill-opacity: 0.65; }
+    .err { font-size: 14px; font-weight: bold; }
+    .caption { font-size: 12px; opacity: 0.88; }
+    .box { fill: #ffffff; stroke: #1a2f5e; stroke-width: 1.5; stroke-opacity: 0.5; }
+    .errbox { fill: #1a2f5e; fill-opacity: 0.10; stroke: #1a2f5e; stroke-width: 2; stroke-opacity: 0.75; }
+    .frame { fill: none; stroke: #1a2f5e; stroke-opacity: 0.2; }
+  </style>
+
+  <rect width="800" height="378" fill="#ffffff" />
+  <rect x="1" y="1" width="798" height="376" rx="6" class="frame" />
+  <text x="400" y="36" class="title">Same Operator, Different Behavior</text>
+
+  <!-- Row 1: 5 + 3 -> 8 -->
+  <g transform="translate(0, 70)">
+    <rect x="148" y="0" width="44" height="40" rx="3" class="box" />
+    <text x="170" y="26" class="val">5</text>
+    <text x="255" y="27" class="op">+</text>
+    <rect x="328" y="0" width="44" height="40" rx="3" class="box" />
+    <text x="350" y="26" class="val">3</text>
+    <text x="445" y="27" class="op">&#8594;</text>
+    <rect x="533" y="0" width="44" height="40" rx="3" class="box" />
+    <text x="555" y="26" class="val">8</text>
+    <text x="625" y="26" class="ann">adds</text>
+  </g>
+
+  <!-- Row 2: "5" + "3" -> "53" -->
+  <g transform="translate(0, 130)">
+    <rect x="139" y="0" width="62" height="40" rx="3" class="box" />
+    <text x="170" y="26" class="val">"5"</text>
+    <text x="255" y="27" class="op">+</text>
+    <rect x="319" y="0" width="62" height="40" rx="3" class="box" />
+    <text x="350" y="26" class="val">"3"</text>
+    <text x="445" y="27" class="op">&#8594;</text>
+    <rect x="519" y="0" width="72" height="40" rx="3" class="box" />
+    <text x="555" y="26" class="val">"53"</text>
+    <text x="625" y="26" class="ann">concatenates</text>
+  </g>
+
+  <!-- Row 3: "=" * 3 -> "===" -->
+  <g transform="translate(0, 190)">
+    <rect x="139" y="0" width="62" height="40" rx="3" class="box" />
+    <text x="170" y="26" class="val">"="</text>
+    <text x="255" y="27" class="op">*</text>
+    <rect x="328" y="0" width="44" height="40" rx="3" class="box" />
+    <text x="350" y="26" class="val">3</text>
+    <text x="445" y="27" class="op">&#8594;</text>
+    <rect x="510" y="0" width="90" height="40" rx="3" class="box" />
+    <text x="555" y="26" class="val">"==="</text>
+    <text x="625" y="26" class="ann">repeats</text>
+  </g>
+
+  <!-- Row 4: "2" * "14.99" -> TypeError -->
+  <g transform="translate(0, 250)">
+    <rect x="139" y="0" width="62" height="40" rx="3" class="box" />
+    <text x="170" y="26" class="val">"2"</text>
+    <text x="255" y="27" class="op">*</text>
+    <rect x="308" y="0" width="84" height="40" rx="3" class="box" />
+    <text x="350" y="26" class="val">"14.99"</text>
+    <text x="445" y="27" class="op">&#8594;</text>
+    <rect x="502" y="0" width="106" height="40" rx="3" class="errbox" />
+    <text x="555" y="26" class="err">TypeError</text>
+    <text x="625" y="20" class="ann">undefined</text>
+    <text x="625" y="36" class="annsub">(the Chapter 2 crash)</text>
+  </g>
+
+  <text x="400" y="330" class="caption">Python looks at the types on each side to decide</text>
+  <text x="400" y="352" class="caption">what an operator does - the quotes are the difference.</text>
+</svg>

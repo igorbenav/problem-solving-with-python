@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 394">
+  <style>
+    text { font-family: 'Courier New', 'Courier', monospace; text-anchor: middle; fill: #1a2f5e; }
+    .title { font-size: 16px; font-weight: bold; }
+    .tick { font-size: 12px; }
+    .ylab { font-size: 12px; text-anchor: end; }
+    .mlab { font-size: 12px; text-anchor: start; }
+    .ann { font-size: 11px; text-anchor: start; }
+    .annr { font-size: 11px; text-anchor: end; }
+    .zone { font-size: 11px; fill-opacity: 0.7; }
+    .axis { font-size: 12px; fill-opacity: 0.8; }
+    .caption { font-size: 12px; opacity: 0.88; }
+    .frame { fill: none; stroke: #1a2f5e; stroke-opacity: 0.2; }
+    .rule { stroke: #1a2f5e; stroke-opacity: 0.15; }
+    .axline { stroke: #1a2f5e; stroke-opacity: 0.5; stroke-width: 1.5; }
+    .drift { stroke: #1a2f5e; stroke-opacity: 0.85; stroke-width: 2; fill: none; }
+    .pt { fill: #ffffff; stroke: #1a2f5e; stroke-opacity: 0.9; stroke-width: 1.6; }
+    .ptend { fill: #1a2f5e; }
+    .threshold { stroke: #1a2f5e; stroke-opacity: 0.6; stroke-width: 1.4; stroke-dasharray: 5 4; }
+    .failzone { fill: #1a2f5e; fill-opacity: 0.05; }
+    .leader { stroke: #1a2f5e; stroke-opacity: 0.4; stroke-width: 1; }
+  </style>
+  <rect width="800" height="394" fill="#ffffff" />
+  <rect x="1" y="1" width="798" height="392" rx="6" class="frame" />
+  <text x="400" y="38" class="title">The Patriot's Clock Drift</text>
+
+  <!-- failure zone: exactly the plot's vertical extent, from the 20 h line -->
+  <rect x="214" y="64" width="496" height="232" class="failzone" />
+  <text x="222" y="79" class="ann">predicted failure: 20 h</text>
+  <text x="430" y="262" class="zone">operating past predicted failure</text>
+
+  <!-- gridlines + dual axis labels -->
+  <line x1="90" y1="233.1" x2="710" y2="233.1" class="rule" />
+  <line x1="90" y1="170.3" x2="710" y2="170.3" class="rule" />
+  <line x1="90" y1="107.4" x2="710" y2="107.4" class="rule" />
+  <text x="80" y="300" class="ylab">0</text>
+  <text x="80" y="237.1" class="ylab">0.1 s</text>
+  <text x="80" y="174.3" class="ylab">0.2 s</text>
+  <text x="80" y="111.4" class="ylab">0.3 s</text>
+  <text x="720" y="237.1" class="mlab">200 m</text>
+  <text x="720" y="174.3" class="mlab">400 m</text>
+  <text x="720" y="111.4" class="mlab">600 m</text>
+
+  <!-- axes -->
+  <line x1="90" y1="296" x2="710" y2="296" class="axline" />
+  <line x1="90" y1="296" x2="90" y2="64" class="axline" />
+
+  <!-- threshold -->
+  <line x1="214" y1="296" x2="214" y2="64" class="threshold" />
+
+  <!-- drift line -->
+  <line x1="90" y1="296" x2="710" y2="80.2" class="drift" />
+
+  <!-- GAO table points -->
+  <circle cx="96.2" cy="293.9" r="4" class="pt" />
+  <circle cx="139.6" cy="278.7" r="4" class="pt" />
+  <circle cx="214" cy="252.8" r="4" class="pt" />
+  <circle cx="387.6" cy="192.4" r="4" class="pt" />
+  <circle cx="536.4" cy="140.6" r="4" class="pt" />
+  <circle cx="710" cy="80.2" r="4.5" class="ptend" />
+
+  <!-- endpoint annotation, below the line's right end, with leader to the dot -->
+  <line x1="707" y1="89" x2="696" y2="168" class="leader" />
+  <text x="704" y="182" class="annr">Alpha Battery: 100 h of uptime</text>
+  <text x="704" y="197" class="annr">0.34 s of drift = 687 m off target</text>
+
+  <!-- x axis -->
+  <text x="90" y="316" class="tick">0</text>
+  <text x="214" y="316" class="tick">20</text>
+  <text x="338" y="316" class="tick">40</text>
+  <text x="462" y="316" class="tick">60</text>
+  <text x="586" y="316" class="tick">80</text>
+  <text x="710" y="316" class="tick">100</text>
+  <text x="400" y="336" class="axis">hours of continuous operation</text>
+
+  <text x="400" y="360" class="caption">A constant error of 0.000000095 per tick, multiplied by every tick of uptime.</text>
+  <text x="400" y="378" class="caption">The drift was spotted at 8 hours; Alpha Battery had run for 100. (GAO/IMTEC-92-26)</text>
+</svg>

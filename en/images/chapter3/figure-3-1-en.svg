@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350">
+  <style>
+    text { font-family: 'Courier New', 'Courier', monospace; text-anchor: middle; fill: #1a2f5e; }
+    .title { font-size: 16px; font-weight: bold; }
+    .char { font-size: 18px; font-weight: bold; }
+    .idx { font-size: 13px; }
+    .neg { font-size: 13px; fill-opacity: 0.65; }
+    .label { font-size: 13px; }
+    .caption { font-size: 12px; opacity: 0.88; }
+    .box { fill: #ffffff; stroke: #1a2f5e; stroke-width: 1.5; stroke-opacity: 0.5; }
+    .selected { fill: #1a2f5e; fill-opacity: 0.10; stroke-opacity: 0.9; stroke-width: 2.5; }
+    .frame { fill: none; stroke: #1a2f5e; stroke-opacity: 0.2; }
+    .bracket { fill: none; stroke: #1a2f5e; stroke-width: 1.6; stroke-opacity: 0.7; }
+  </style>
+
+  <rect width="800" height="350" fill="#ffffff" />
+  <rect x="1" y="1" width="798" height="348" rx="6" class="frame" />
+  <text x="400" y="36" class="title">Indexing and Slicing: "hello"</text>
+
+  <text x="250" y="92" class="idx">0</text>
+  <text x="325" y="92" class="idx">1</text>
+  <text x="400" y="92" class="idx">2</text>
+  <text x="475" y="92" class="idx">3</text>
+  <text x="550" y="92" class="idx">4</text>
+
+  <g transform="translate(215, 105)">
+    <rect width="70" height="55" rx="3" class="box" />
+    <text x="35" y="36" class="char">h</text>
+  </g>
+  <g transform="translate(290, 105)">
+    <rect width="70" height="55" rx="3" class="box selected" />
+    <text x="35" y="36" class="char">e</text>
+  </g>
+  <g transform="translate(365, 105)">
+    <rect width="70" height="55" rx="3" class="box selected" />
+    <text x="35" y="36" class="char">l</text>
+  </g>
+  <g transform="translate(440, 105)">
+    <rect width="70" height="55" rx="3" class="box selected" />
+    <text x="35" y="36" class="char">l</text>
+  </g>
+  <g transform="translate(515, 105)">
+    <rect width="70" height="55" rx="3" class="box" />
+    <text x="35" y="36" class="char">o</text>
+  </g>
+
+  <text x="250" y="186" class="neg">-5</text>
+  <text x="325" y="186" class="neg">-4</text>
+  <text x="400" y="186" class="neg">-3</text>
+  <text x="475" y="186" class="neg">-2</text>
+  <text x="550" y="186" class="neg">-1</text>
+
+  <path d="M 292 205 L 292 218 L 508 218 L 508 205" class="bracket" />
+  <text x="400" y="242" class="label">"hello"[1:4]  &#8594;  "ell"</text>
+
+  <text x="400" y="290" class="caption">The end position is excluded: [1:4] takes positions 1, 2, and 3.</text>
+  <text x="400" y="312" class="caption">Negative indices count from the end.</text>
+</svg>
