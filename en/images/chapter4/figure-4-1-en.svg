@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 552">
+  <style>
+    text { font-family: 'Courier New', 'Courier', monospace; text-anchor: middle; fill: #1a2f5e; }
+    .title { font-size: 16px; font-weight: bold; }
+    .val { font-size: 14px; font-weight: bold; }
+    .start { font-size: 13px; }
+    .flow { font-size: 11px; text-anchor: start; fill-opacity: 0.7; }
+    .flowt { font-size: 11px; fill-opacity: 0.7; }
+    .skip { font-size: 11px; text-anchor: start; fill-opacity: 0.6; }
+    .caption { font-size: 12px; opacity: 0.88; }
+    .box { fill: #ffffff; stroke: #1a2f5e; stroke-width: 1.5; stroke-opacity: 0.5; }
+    .selected { fill: #1a2f5e; fill-opacity: 0.10; stroke-opacity: 0.9; stroke-width: 2.5; }
+    .faded { opacity: 0.35; }
+    .frame { fill: none; stroke: #1a2f5e; stroke-opacity: 0.2; }
+    .arrow { fill: none; stroke: #1a2f5e; stroke-width: 1.6; stroke-opacity: 0.6; }
+    .head { fill: #1a2f5e; fill-opacity: 0.6; }
+    .bracket { fill: none; stroke: #1a2f5e; stroke-width: 1.6; stroke-opacity: 0.7; }
+  </style>
+  <rect width="800" height="552" fill="#ffffff" />
+  <rect x="1" y="1" width="798" height="550" rx="6" class="frame" />
+  <text x="400" y="38" class="title">The elif Chain: First True Wins</text>
+
+  <text x="250" y="74" class="start">score = 85</text>
+
+  <!-- Row 1: score >= 90 -->
+  <rect x="165" y="92" width="170" height="46" rx="3" class="box" />
+  <text x="250" y="121" class="val">score &gt;= 90</text>
+  <path d="M 250 142 L 250 168" class="arrow" />
+  <path d="M 250 176 l -5 -9 l 10 0 z" class="head" />
+  <text x="264" y="161" class="flow">False</text>
+
+  <!-- Row 2: score >= 80 (winner) -->
+  <rect x="165" y="176" width="170" height="46" rx="3" class="box selected" />
+  <text x="250" y="205" class="val">score &gt;= 80</text>
+  <path d="M 335 199 L 437 199" class="arrow" />
+  <path d="M 445 199 l -9 -5 l 0 10 z" class="head" />
+  <text x="390" y="190" class="flowt">True</text>
+
+  <!-- Action box -->
+  <rect x="445" y="176" width="220" height="46" rx="3" class="box selected" />
+  <text x="555" y="205" class="val">print("Grade: B")</text>
+
+  <!-- Skipped rows -->
+  <g class="faded">
+    <rect x="165" y="260" width="170" height="46" rx="3" class="box" />
+    <text x="250" y="289" class="val">score &gt;= 70</text>
+    <rect x="165" y="344" width="170" height="46" rx="3" class="box" />
+    <text x="250" y="373" class="val">score &gt;= 60</text>
+    <rect x="165" y="428" width="170" height="46" rx="3" class="box" />
+    <text x="250" y="457" class="val">else</text>
+  </g>
+
+  <!-- Bracket grouping the skipped rows -->
+  <path d="M 351 260 L 363 260 L 363 474 L 351 474" class="bracket" />
+  <text x="377" y="371" class="skip">never checked</text>
+
+  <text x="400" y="508" class="caption">Python checks top to bottom and runs the first block whose condition is True.</text>
+  <text x="400" y="528" class="caption">score = 85 fails the first check, passes the second - the rest are never looked at.</text>
+</svg>

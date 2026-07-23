@@ -12,6 +12,7 @@ book:
     - chapters/chapter1.qmd
     - chapters/chapter2.qmd
     - chapters/chapter3.qmd
+    - chapters/chapter4.qmd
     # - references.qmd
 
 format:
@@ -42,7 +43,6 @@ format:
         }
         </style>
   pdf:
-    output-file: "Practical Problem Solving (en)"
     pdf-engine: xelatex
     documentclass: scrreprt
     toc-depth: 2

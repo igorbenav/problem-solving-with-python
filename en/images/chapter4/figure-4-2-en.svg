@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 446">
+  <style>
+    text { font-family: 'Courier New', 'Courier', monospace; text-anchor: middle; fill: #1a2f5e; }
+    .title { font-size: 16px; font-weight: bold; }
+    .val { font-size: 14px; font-weight: bold; }
+    .op { font-size: 14px; font-weight: bold; }
+    .res { font-size: 13px; text-anchor: start; }
+    .sub { font-size: 11px; fill-opacity: 0.75; }
+    .caption { font-size: 12px; opacity: 0.88; }
+    .box { fill: #ffffff; stroke: #1a2f5e; stroke-width: 1.5; stroke-opacity: 0.5; }
+    .skipbox { fill: #ffffff; stroke: #1a2f5e; stroke-width: 1.5; stroke-opacity: 0.4; stroke-dasharray: 4 3; }
+    .skipval { fill-opacity: 0.6; }
+    .frame { fill: none; stroke: #1a2f5e; stroke-opacity: 0.2; }
+  </style>
+  <rect width="800" height="446" fill="#ffffff" />
+  <rect x="1" y="1" width="798" height="444" rx="6" class="frame" />
+  <text x="400" y="38" class="title">Short-Circuit Evaluation: Stopping Early</text>
+
+  <!-- Row 1: x and y, x is False -->
+  <rect x="205" y="90" width="50" height="46" rx="3" class="box" />
+  <text x="230" y="119" class="val">x</text>
+  <text x="230" y="154" class="sub">False</text>
+  <text x="310" y="119" class="op">and</text>
+  <rect x="395" y="90" width="50" height="46" rx="3" class="skipbox" />
+  <text x="420" y="119" class="val skipval">y</text>
+  <text x="420" y="154" class="sub">never evaluated</text>
+  <text x="530" y="119" class="res">&#8594; False</text>
+
+  <!-- Row 2: x or y, x is True -->
+  <rect x="205" y="190" width="50" height="46" rx="3" class="box" />
+  <text x="230" y="219" class="val">x</text>
+  <text x="230" y="254" class="sub">True</text>
+  <text x="310" y="219" class="op">or</text>
+  <rect x="395" y="190" width="50" height="46" rx="3" class="skipbox" />
+  <text x="420" y="219" class="val skipval">y</text>
+  <text x="420" y="254" class="sub">never evaluated</text>
+  <text x="530" y="219" class="res">&#8594; True</text>
+
+  <!-- Row 3: the safe check -->
+  <rect x="195" y="290" width="70" height="46" rx="3" class="box" />
+  <text x="230" y="319" class="val">age</text>
+  <text x="230" y="354" class="sub">empty: falsy</text>
+  <text x="310" y="319" class="op">and</text>
+  <rect x="365" y="290" width="110" height="46" rx="3" class="skipbox" />
+  <text x="420" y="319" class="val skipval">age &gt; 0</text>
+  <text x="420" y="354" class="sub">never evaluated</text>
+  <text x="530" y="319" class="res">&#8594; False (no error)</text>
+
+  <text x="400" y="402" class="caption">Once the left side settles the answer, Python stops - the right side never runs.</text>
+  <text x="400" y="422" class="caption">An empty age short-circuits the and, so age &gt; 0 is never evaluated.</text>
+</svg>
