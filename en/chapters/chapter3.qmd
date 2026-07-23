@@ -92,7 +92,7 @@ This also tells you which decimals are safe: anything that is a finite sum of th
 
 For most purposes the error is far too small to matter, and later in this chapter `:.2f` will round it away before anyone sees it - the customer's receipt says $0.30. For financial systems where every cent must be exact, Python has a `decimal` module that stores base-10 digits directly; we won't need it in this book, but know it exists.
 
-When the error does matter and nobody accounts for it, the consequences can be real. In 1991, during the Gulf War, an American Patriot missile battery in Dhahran, Saudi Arabia failed to track and intercept an incoming Iraqi Scud, which struck an army barracks and killed 28 soldiers. The investigation traced the failure to exactly the number on this page: the system's clock counted time as a whole number of tenths of a second - and whole numbers, as we just saw, store perfectly. But to use that count in tracking calculations, the software multiplied it by 0.1 to convert to seconds, and the system's 24-bit hardware could only hold a chopped-off version of 0.1's endless binary sum, a constant off by about 0.000000095 - more than ten billion times the error in Python's 64-bit floats, the price of the smaller budget. Multiplied by the clock count after 100 hours of continuous operation, the computed time had drifted by about a third of a second, and a Scud covers more than half a kilometer in that time: the radar looked for the missile in the wrong place, found nothing, and dismissed the alert. The Army already knew about the drift - a corrected version of the software arrived in Dhahran the day after the attack.
+When the error does matter and nobody accounts for it, the consequences can be real. In 1991, during the Gulf War, an American Patriot missile battery in Dhahran, Saudi Arabia failed to track and intercept an incoming Iraqi Scud, which struck an army barracks and killed 28 soldiers. The investigation traced the failure to exactly the number on this page: the system's clock counted time as a whole number of tenths of a second - and whole numbers, as we just saw, store perfectly. But to use that count in tracking calculations, the software multiplied it by 0.1 to convert to seconds, and the system's 24-bit hardware could only hold a chopped-off version of 0.1's endless binary sum, a constant off by about 0.000000095. Multiplied by the clock count after 100 hours of continuous operation, the computed time had drifted by about a third of a second, and a Scud covers more than half a kilometer in that time: the radar looked for the missile in the wrong place, found nothing, and dismissed the alert. The Army already knew about the drift - a corrected version of the software arrived in Dhahran the day after the attack.
 
 ![The Patriot's Clock Drift](../images/chapter3/figure-3-4-en.svg)
 
@@ -272,6 +272,13 @@ print("=== Receipt Printer ===", end="\n\n")
 store_name = input("Store name: ").strip().title()
 customer_name = input("Customer name: ").strip().title()
 print()
+```
+
+Then the three items:
+
+```python
+# receipt.py
+# ...existing code above
 
 item1_name = input("Item 1 name: ").strip()
 item1_qty = int(input("Item 1 quantity: "))
@@ -323,6 +330,13 @@ print("-" * width)
 
 print(f"{'Item':<15} {'Qty':>3} {'Price':>7} {'Total':>7}")
 print("-" * width)
+```
+
+Now the three item rows - format each price with its dollar sign first, then right-align the result:
+
+```python
+# receipt.py
+# ...existing code above
 
 p1 = f"${item1_price:.2f}"
 t1 = f"${item1_total:.2f}"
@@ -335,6 +349,13 @@ print(f"{item2_name:<15} {item2_qty:>3} {p2:>7} {t2:>7}")
 p3 = f"${item3_price:.2f}"
 t3 = f"${item3_total:.2f}"
 print(f"{item3_name:<15} {item3_qty:>3} {p3:>7} {t3:>7}")
+```
+
+And the totals section, closing the frame:
+
+```python
+# receipt.py
+# ...existing code above
 
 print("-" * width)
 sub_str = f"${subtotal:.2f}"
@@ -372,7 +393,7 @@ Pen               5   $1.25   $6.25
 
 Compare this to the Chapter 2 version: that receipt was a string-formatting exercise - it could display prices but not add them; this receipt computes real totals, applies tax, cleans up input, and formats everything with aligned columns and two decimal places. The difference is type conversion (turning input strings into numbers), string methods (cleaning and normalizing text), and f-strings (controlling how values display).
 
-The binary limitation from earlier is at work here too: the stored subtotal is actually `79.72999999999999`, and the total is `86.10839999999999`. But `:.2f` rounds for display, so the customer sees `$79.73` and `$86.11`.
+The rounding error from earlier is quietly at work here too: the stored subtotal is actually `79.72999999999999`, and the total is `86.10839999999999`. But `:.2f` rounds for display, so the customer sees `$79.73` and `$86.11`.
 
 Look at how the columns work: each price gets formatted as a string with a dollar sign first (`f"${item1_price:.2f}"` produces `"$29.99"`), then that string gets right-aligned in a 7-character field (`{p1:>7}` produces `" $29.99"` or `"  $4.50"`); since the header uses the same field widths (`{'Price':>7}`), everything lines up. The two-step approach - format the value, then align the formatted string - is a pattern you'll use whenever you need columns with mixed content like currency symbols.
 

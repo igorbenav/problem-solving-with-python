@@ -85,7 +85,8 @@ problem-solving-with-python/
 │   ├── images/                  # Figures (language-specific)
 │   │   ├── chapter1/
 │   │   ├── chapter2/
-│   │   └── chapter3/
+│   │   ├── chapter3/
+│   │   └── chapter4/
 │   └── code/                    # Completed code per chapter
 │       └── chapter1/
 ├── docs/                        # Rendered output
@@ -102,26 +103,28 @@ To translate the book into a new language:
 
 1. Copy the `en/` directory as your starting point:
    ```bash
-   cp -r en/ pt/   # for Portuguese, for example
+   cp -r en/ pt-br/   # for Brazilian Portuguese, for example
    ```
 
-2. In your new directory (e.g., `pt/`):
+2. In your new directory (e.g., `pt-br/`):
    - Translate all `.qmd` files (chapters, index, references)
    - Translate or recreate images that contain text (SVGs in `images/`)
-   - Update `_quarto.yml`: change `output-dir` to `../docs/pt`, translate the title/subtitle, and update `output-file` to use your language code (e.g., `"Practical Problem Solving (pt)"`)
+   - Update `_quarto.yml`: change `output-dir` to `../docs/pt-br` and translate the title/subtitle
    - Code in `code/` may need translated comments
+
+   Each language builds into its own `docs/` directory, so the PDF is simply named in that language. The filename comes from the book `title` you set in `_quarto.yml` - translating the title is all you need, no extra setting. A title of `"Resolução de Problemas na Prática com Python"` produces `docs/pt-br/Resolução-de-Problemas-na-Prática-com-Python.pdf`.
 
 3. Update the cover image:
    - Edit `images/cover.svg` translate the text elements (title, subtitle, author) to your language
    - Convert the SVG to PNG for PDF rendering (requires `rsvg-convert`, installed via `librsvg`):
      ```bash
-     rsvg-convert -f png -w 2550 -h 3300 -o pt/images/cover.png pt/images/cover.svg
+     rsvg-convert -f png -w 2550 -h 3300 -o pt-br/images/cover.png pt-br/images/cover.svg
      ```
 
 4. Build with:
    ```bash
-   uv run quarto render pt/
-   uv run quarto render pt/ --to pdf
+   uv run quarto render pt-br/
+   uv run quarto render pt-br/ --to pdf
    ```
 
 5. Add yourself to the contributors table below and submit a pull request.
